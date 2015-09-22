@@ -15,6 +15,7 @@
 	    <%= f.label :image, "Attach an Image" %>
 	    <%= f.file_field :image %>
 	</p>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
 	<p>
 		<%= f.submit %>
 	</p>
