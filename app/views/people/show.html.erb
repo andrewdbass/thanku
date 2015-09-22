@@ -1,11 +1,18 @@
 <h1>Person</h1>
 <p>
-		<%= @person.name %></br>
-		<%= @person.bio %></br>
-		<%= @person.link%></br>
-		<%= image_tag @person.image.url(:thumb) %>
-		<%= link_to 'Show' , @person %>
-		<%= link_to 'Edit', edit_person_path(@person) %>
-		<%= link_to 'Destroy', @person,  method: :delete, data: { confirm: 'Are you sure?' } %>
-		<%= link_to 'Back', people_path %>
+	<%= @person.name %></br>
+	<%= @person.bio %></br>
+	<%= @person.link%></br>
+	<%= image_tag @person.image.url(:thumb) %>
+	<%= link_to 'Show' , @person %>
+	<%= link_to 'Edit', edit_person_path(@person) %>
+	<%= link_to 'Destroy', @person,  method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%= link_to 'Back', people_path %>
+</p>
+<% @comments.each do |comment| %>
+	<p>	
+		<%= comment.name %></br>
+		<%= comment.body %>
 	</p>
+<% end %>
+<%= render 'comments/form' %>

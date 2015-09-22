@@ -15,6 +15,9 @@ class PeopleController < ApplicationController
 	end
 	def show
 		@person = Person.find(params[:id])
+		@comments = Comment.all.where(:person_id == @person.id)
+		@comment = Comment.new
+
 	end
 	def edit
 		@person = Person.find(params[:id])
