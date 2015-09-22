@@ -8,6 +8,7 @@
 		<%= f.text_area :body %>
 	</p>
 	<%= f.hidden_field :person_id, value: @person.id %>
+	<%= f.hidden_field :approved, value: false %>
 	<p>
 		<%= f.submit %>
 	</p>
