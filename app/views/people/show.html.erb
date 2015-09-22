@@ -1,0 +1,10 @@
+<h1>Person</h1>
+<p>
+		<%= @person.name %></br>
+		<%= @person.bio %></br>
+		<%= @person.link%></br>
+		<%= link_to 'Show' , @person %>
+		<%= link_to 'Edit', edit_person_path(@person) %>
+		<%= link_to 'Destroy', @person,  method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= link_to 'Back', people_path %>
+	</p>
