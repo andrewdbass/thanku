@@ -12,6 +12,10 @@
 		<%= f.text_field :link %>
 	</p>
 	<p>
+	    <%= f.label :image, "Attach an Image" %>
+	    <%= f.file_field :image %>
+	</p>
+	<p>
 		<%= f.submit %>
 	</p>
 <% end %>

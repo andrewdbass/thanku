@@ -37,6 +37,6 @@ class PeopleController < ApplicationController
 
 	private
 	def person_params
-		params.require(:person).permit(:name, :bio, :link)
+		params.require(:person).permit(:name, :bio, :link, :image)
 	end
 end

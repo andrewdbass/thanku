@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
   validates :email, uniqueness: true
+
+  has_one :Person
 end
