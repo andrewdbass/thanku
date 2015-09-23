@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def index
     @comments = Comment.all
+
   end
 
   def show
@@ -13,13 +14,14 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to comments_path
+      redirect_to person_path(@comment.person_id)
     else 
-      render new_comment_path
+      render new_person_comment_path
     end
   end
 
   def edit
+
     @comment = Comment.find(params[:id])
   end
 
@@ -39,9 +41,16 @@ class CommentsController < ApplicationController
 
     redirect_to comments_path
   end
+  def approve
+    @comment = Comment.find(params[:comment_id])
+    @comment.approved = true
+    @comment.save
+
+    redirect_to(:back)
+  end
 
   private
   def comment_params
-    params.require(:comment).permit(:name, :body, :person_id)
+    params.require(:comment).permit(:name, :body,:approved, :person_id)
   end
 end

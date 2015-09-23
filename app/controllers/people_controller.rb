@@ -1,6 +1,11 @@
 class PeopleController < ApplicationController
 	def index
-		@people = Person.all
+		
+		if params[:search]
+			@people = Person.where('name LIKE ?', "%#{params[:search]}%")
+		else
+			@people = Person.all
+		end
 	end
 	def new
 		@person = Person.new
@@ -15,7 +20,7 @@ class PeopleController < ApplicationController
 	end
 	def show
 		@person = Person.find(params[:id])
-		@comments = Comment.all.where(:person_id == @person.id)
+		@comments = Comment.where(:person_id =>  @person.id).where(:approved => true)
 		@comment = Comment.new
 
 	end
@@ -36,6 +41,10 @@ class PeopleController < ApplicationController
 		@person.delete
 
 		redirect_to people_path	
+	end
+	def approve_comments
+		@person = Person.find(params[:person_id])
+		@comments = Comment.all.where(:approved => false).where(:person_id => @person.id)
 	end
 
 	private

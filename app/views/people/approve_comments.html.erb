@@ -1,0 +1,9 @@
+<% @comments.each do |comment| %>
+	<p>
+		<%= comment.name %></br>
+		<%= comment.body %></br>
+		<%= comment.approved %></br>
+		<%= button_to "Destroy", person_comment_path(comment.person_id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= button_to "Approve", person_comment_approve_path(comment.person_id, comment.id), method: :put %>
+	</p>	
+<% end %>

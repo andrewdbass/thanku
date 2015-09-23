@@ -3,9 +3,9 @@
 	<p>
 		<%= comment.name %></br>
 		<%= comment.body %></br>
-		<%= link_to "Show", comment %>
-		<%= link_to "Edit", edit_comment_path(comment) %>
-		<%= link_to "Destroy", comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= link_to "Show", person_comment_path(comment.person_id, comment.id) %>
+		<%= link_to "Edit", edit_person_comment_path(comment.person_id, comment.id) %>
+		<%= link_to "Destroy", person_comment_path(comment.person_id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 	</p>
 <% end %>
-<%= link_to "New Comment", new_comment_path %>	
+<%= link_to "New Comment", new_person_comment_path %>	
