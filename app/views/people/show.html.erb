@@ -4,10 +4,9 @@
 	<%= @person.bio %></br>
 	<%= @person.link%></br>
 	<%= image_tag @person.image.url(:thumb) %>
-	<%= link_to 'Show' , @person %>
-	<%= link_to 'Edit', edit_person_path(@person) %>
+	<%= link_to 'Edit Profile', edit_person_path(@person) %>
 	<%= link_to 'Destroy', @person,  method: :delete, data: { confirm: 'Are you sure?' } %>
-	<%= link_to 'Back', people_path %>
+	<%= link_to 'Back', home_path %>
 </p>
 <% @comments.each do |comment| %>
 	<p>	

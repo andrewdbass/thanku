@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 	post 'logout' => 'user_sessions#destroy', :as => :logout
 	get '/people/:person_id/approve_comments' => 'people#approve_comments'
 
+	get 'home' => 'static_pages#home'
+
 	resources :people do
 		resources :comments do
 			put :approve

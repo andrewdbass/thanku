@@ -23,6 +23,7 @@
     <%= f.label :password_confrimation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
+  <% f.hidden_field :sessions, :value => 0%>
   <div class="actions">
     <%= f.submit %>
   </div>

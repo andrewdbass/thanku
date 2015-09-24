@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+	skip_before_filter :require_login, only: [:index, :show]
 	def index
 		
 		if params[:search]
@@ -12,8 +13,9 @@ class PeopleController < ApplicationController
 	end
 	def create
 		@person = Person.new(person_params)
-		if @person.save 
-			redirect_to people_path
+		if @person.save
+			current_user.update(:person_id => @person.id)
+			redirect_to person_path(@person)
 		else
 			render :new
 		end

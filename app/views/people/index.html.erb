@@ -7,13 +7,8 @@
 <% end %>
 <% @people.each do |person| %>
 	<p>
-		<%= person.name %></br>
+		<%= image_tag person.image.url(:thumb) %></br>
+		<%= link_to person.name , person %></br>
 		<%= person.bio %></br>
-		<%= person.link%></br>
-		<%= link_to 'Show' , person %>
-		<%= link_to 'Edit', edit_person_path(person) %>
-		<%= link_to 'Destroy', person,  method: :delete, data: { confirm: 'Are you sure?' } %>
 	</p>
 <% end %>
-
-<%= link_to "New Person", new_person_path %>

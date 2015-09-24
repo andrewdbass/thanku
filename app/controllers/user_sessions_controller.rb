@@ -6,7 +6,13 @@ class UserSessionsController < ApplicationController
 
   def create
   	if @user = login(params[:email], params[:password])
-  		redirect_back_or_to(:users, notice: "Login Succesfull")
+      @user.update(:sessions => (@user.sessions + 1))
+
+      if @user.sessions == 1
+        redirect_to(new_person_path, notice: "Login Succesfull")
+      else
+  		  redirect_back_or_to(home_path, notice: "Login Succesfull")
+      end
   	else
   		flash.now[:alert] = "Login Failed"
   		render action: 'new'
@@ -15,6 +21,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
   	logout 
-  	redirect_to(:users, notice: "Logged out")
+  	redirect_to( home_path, notice: "Logged out")
   end
 end

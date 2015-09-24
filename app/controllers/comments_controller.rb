@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  skip_before_filter :require_login, except:[:approve]
   def index
     @comments = Comment.all
 
@@ -39,7 +40,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.delete
 
-    redirect_to comments_path
+    redirect_to :back
   end
   def approve
     @comment = Comment.find(params[:comment_id])
