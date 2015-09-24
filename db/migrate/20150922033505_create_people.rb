@@ -4,6 +4,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :name
       t.text :bio
       t.string :link
+      t.integer :user_id
 
       t.timestamps null: false
     end
