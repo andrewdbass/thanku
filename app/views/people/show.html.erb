@@ -4,9 +4,13 @@
 	<%= @person.bio %></br>
 	<%= @person.link%></br>
 	<%= image_tag @person.image.url(:thumb) %>
-	<%= link_to 'Edit Profile', edit_person_path(@person) %>
-	<%= link_to 'Destroy', @person,  method: :delete, data: { confirm: 'Are you sure?' } %>
-	<%= link_to 'Back', home_path %>
+	<% if !current_user.nil? && current_user.person_id == @person.id %>
+		<%= link_to 'Edit Profile', edit_person_path(@person) %>
+		<%= link_to 'Destroy', @person,  method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= link_to "Approve Comments", approve_the_comments_path(@person) %>
+	<% end %>
+	
+	<%= link_to 'Back', 'javascript:history.go(-1);' %>
 </p>
 <% @comments.each do |comment| %>
 	<p>	
