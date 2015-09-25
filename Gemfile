@@ -11,6 +11,7 @@ gem 'sdoc',         '0.4.0', group: :doc
 
 gem 'sorcery'
 gem 'paperclip'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
